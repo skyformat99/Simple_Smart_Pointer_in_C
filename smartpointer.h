@@ -1,6 +1,13 @@
 ﻿
 #ifndef __SMARTPOINTER_H__
 #define __SMARTPOINTER_H__
+#define COMPARE(_op_)                                           \
+bool operator _op_ (const SmartPointer& o) const {              \
+    return mPointer _op_ o.mPointer;                            \
+}                                                               \
+bool operator _op_ (const T* o) const {                         \
+    return mPointer _op_ o;                                     \
+} 
 
 template <typename T> 
 class SmartPointer {
@@ -36,8 +43,10 @@ public:
 			std::cout << "release smart pointer at " << static_cast<const void*>(mPointer) << std::endl;
 		}
 	}
-	T&  operator* () const { return *mPointer; };
-	T* operator-> () const { return mPointer; };
+	T&  operator* () const { return *mPointer; }
+	T* operator-> () const { return mPointer; }
+	COMPARE(== );
+	COMPARE(!= );
 	int getRefCount() {
 		return ref.getRefCount();
 	}
