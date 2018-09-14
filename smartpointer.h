@@ -9,15 +9,19 @@ public:
 		std::cout << "create unkown smart pointer." << std::endl; 
 	}
 	SmartPointer(T *p) :mPointer(p) { 
-		std::cout << "create smart pointer at " << static_cast<const void*>(p) << std::endl; 
+		std::cout << "create smart pointer at " << static_cast<const void*>(p) << std::endl;
+		if (mPointer) 
+			mPointer->incRefCount();
 	}
 	SmartPointer(const SmartPointer &other) :mPointer(other.mPointer) {
 		std::cout << "Copy smart pointer at " << static_cast<const void*>(other.mPointer) << std::endl;
+		if (mPointer) 
+			mPointer->incRefCount();
 	}                
 	SmartPointer &operator = (const SmartPointer &other) {		
 		if (this == &other) 
 			return *this;
-		if (mPointer != nullptr) {
+		if (mPointer) {
 			delete mPointer;
 			mPointer = nullptr;
 		}
@@ -26,7 +30,7 @@ public:
 		return *this;
 	}
 	~SmartPointer() {		
-		if (mPointer != nullptr) {
+		if (mPointer&& mPointer->decRefCount() == 0) {
 			delete mPointer;
 			mPointer = nullptr;
 			std::cout << "release smart pointer at " << static_cast<const void*>(mPointer) << std::endl;
@@ -39,9 +43,10 @@ private:
 class RefBase{
 public:
 	RefBase() : mCount(0) { }
+
 	void incRefCount() {mCount++;}
-	int decRefCount() {return --mCount;}
-	// 调试接口，返回对象当前引用计数   
+	int decRefCount() {return --mCount;} 
+
 	int getRefCount() {return mCount;}
 	virtual ~RefBase() { }
 private:
