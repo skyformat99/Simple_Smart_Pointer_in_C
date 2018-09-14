@@ -25,11 +25,11 @@ public:
 		std::cout << "Assign smart pointer at " << static_cast<const void*>(other.mPointer) << std::endl;
 		return *this;
 	}
-	~SmartPointer() {
-		std::cout << "release smart pointer at " << static_cast<const void*>(mPointer) << std::endl;
+	~SmartPointer() {		
 		if (mPointer != nullptr) {
 			delete mPointer;
 			mPointer = nullptr;
+			std::cout << "release smart pointer at " << static_cast<const void*>(mPointer) << std::endl;
 		}
 	}
 private:
