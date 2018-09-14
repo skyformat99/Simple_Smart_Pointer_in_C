@@ -35,4 +35,16 @@ public:
 private:
 	T *mPointer; 
 };
+
+class RefBase{
+public:
+	RefBase() : mCount(0) { }
+	void incRefCount() {mCount++;}
+	int decRefCount() {return --mCount;}
+	// 调试接口，返回对象当前引用计数   
+	int getRefCount() {return mCount;}
+	virtual ~RefBase() { }
+private:
+	int mCount;
+};
 #endif // __SMARTPOINTER_H__
