@@ -38,9 +38,9 @@ public:
 	}
 	~SmartPointer() {		
 		if (mPointer&& ref.decRefCount() == 0) {
-			delete mPointer;
-			mPointer = nullptr;
 			std::cout << "release smart pointer at " << static_cast<const void*>(mPointer) << std::endl;
+			delete mPointer;
+			mPointer = nullptr;			
 		}
 	}
 	T&  operator* () const { return *mPointer; }
