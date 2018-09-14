@@ -60,7 +60,6 @@ private:
 		int decRefCount() { return --mCount; }
 
 		int getRefCount() { return mCount; }
-		virtual ~RefBase() { }
 	private:
 		int mCount;
 	};

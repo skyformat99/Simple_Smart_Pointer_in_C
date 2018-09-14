@@ -9,6 +9,9 @@ public:
 	~SomeClass() { 
 		std::cout << "SomeClass deconstructor !" << std::endl; 
 	}
+	void func() { 
+		std::cout << "SomeClass func()" << std::endl; 
+	}
 };
 
 void testcase1(){
