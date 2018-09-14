@@ -15,14 +15,17 @@ public:
 };
 
 void testcase1(){
+	std::cout << "=======testcase1=========" << std::endl;
 	SmartPointer<char> spunkown;
-	SmartPointer<char> spnull = NULL;
+	SmartPointer<char> spnull = nullptr;
 	SmartPointer<SomeClass> spclass = new SomeClass;
 	SmartPointer<const char> spstr = "Hello world!";
+	std::cout << "==========================\n";
 }
 
 
 void testcase2(){
+	std::cout << "\n\n=======testcase2=========" << std::endl;
 	SmartPointer<SomeClass> spclass1 = new SomeClass;//調用SmartPointer(T *p) :mPointer(p)
 	std::cout << std::endl;
 
@@ -38,9 +41,11 @@ void testcase2(){
 	std::cout << std::endl;
 	spclass2 = spclass1;//调用SmartPointer &operator = 
 	std::cout << std::endl;
+	std::cout << "==========================\n";
 }
 
 void testcase3(){
+	std::cout << "\n\n=======testcase3=========" << std::endl;
 	SomeClass *pSomeClass = new SomeClass(); //1
 	SmartPointer<SomeClass> spOuter = pSomeClass;
 	std::cout << "SomeClass Ref Count (" << spOuter.getRefCount() << ") outer 1." << std::endl;
@@ -54,10 +59,11 @@ void testcase3(){
 	std::cout << "new another SomeClass class for spOuter." << std::endl;
 	SmartPointer<SomeClass> spOuter2 = new SomeClass();
 	spOuter = spOuter2;// 1处new出来的SomeClass将会被自动释放  
+	std::cout << "==========================\n";
 }
 // 解引用测试
 void testcase4_1(void){
-	std::cout << "=======testcase4_1=========" << std::endl;
+	std::cout << "\n\n=======testcase4_1=========" << std::endl;
 	SmartPointer<SomeClass> spsomeclass = new SomeClass();
 	(*spsomeclass).func();
 	spsomeclass->func();
