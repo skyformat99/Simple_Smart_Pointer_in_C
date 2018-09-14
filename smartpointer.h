@@ -36,6 +36,8 @@ public:
 			std::cout << "release smart pointer at " << static_cast<const void*>(mPointer) << std::endl;
 		}
 	}
+	T&  operator* () const { return *mPointer; };
+	T* operator-> () const { return mPointer; };
 	int getRefCount() {
 		return ref.getRefCount();
 	}
