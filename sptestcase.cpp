@@ -3,15 +3,15 @@
 #include "smartpointer.h"
 class SomeClass {
 public:
-	SomeClass() { 
-		std::cout << "SomeClass default constructor !" << std::endl; 
-	}
-	~SomeClass() { 
-		std::cout << "SomeClass deconstructor !" << std::endl; 
-	}
-	void func() { 
-		std::cout << "SomeClass func()" << std::endl; 
-	}
+	SomeClass() {std::cout << "SomeClass default constructor !" << std::endl; }
+	~SomeClass() {std::cout << "SomeClass deconstructor !" << std::endl; }
+	void func() { std::cout << "SomeClass func()" << std::endl; }
+};
+class OtherClass{
+public:
+	OtherClass() { std::cout << "OtherClass default constructor !" << std::endl; };
+	~OtherClass() { std::cout << "OtherClass deconstructor !" << std::endl; };
+	void foo() { std::cout << "OtherClass foo()" << std::endl; }
 };
 
 void testcase1(){
