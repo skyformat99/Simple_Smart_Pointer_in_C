@@ -98,6 +98,5 @@ int main(){
 	testcase3();
 	testcase4_1();
 	testcase4_2();
-	while (1);
 	return 0;
 }
