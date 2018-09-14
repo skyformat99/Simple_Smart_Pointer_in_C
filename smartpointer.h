@@ -11,6 +11,9 @@ public:
 	SmartPointer(T *p) :mPointer(p) { 
 		std::cout << "create smart pointer at " << static_cast<const void*>(p) << std::endl; 
 	}
+	SmartPointer(const SmartPointer &other) :mPointer(other.mPointer) {
+		std::cout << "Copy smart pointer at " << static_cast<const void*>(other.mPointer) << std::endl;
+	}
 	~SmartPointer() {
 		std::cout << "release smart pointer at " << static_cast<const void*>(mPointer) << std::endl;
 		if (mPointer != nullptr) {
