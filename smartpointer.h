@@ -13,6 +13,17 @@ public:
 	}
 	SmartPointer(const SmartPointer &other) :mPointer(other.mPointer) {
 		std::cout << "Copy smart pointer at " << static_cast<const void*>(other.mPointer) << std::endl;
+	}                
+	SmartPointer &operator = (const SmartPointer &other) {		
+		if (this == &other) 
+			return *this;
+		if (mPointer != nullptr) {
+			delete mPointer;
+			mPointer = nullptr;
+		}
+		mPointer = other.mPointer;
+		std::cout << "Assign smart pointer at " << static_cast<const void*>(other.mPointer) << std::endl;
+		return *this;
 	}
 	~SmartPointer() {
 		std::cout << "release smart pointer at " << static_cast<const void*>(mPointer) << std::endl;
