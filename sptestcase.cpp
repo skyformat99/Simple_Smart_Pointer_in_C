@@ -15,17 +15,17 @@ public:
 };
 
 void testcase1(){
-	std::cout << "=======testcase1=========" << std::endl;
+	std::cout << "######### testcase_1 #########" << std::endl;
 	SmartPointer<char> spunkown;
 	SmartPointer<char> spnull = nullptr;
 	SmartPointer<SomeClass> spclass = new SomeClass;
-	SmartPointer<const char> spstr = "Hello world!";
+	SmartPointer<int> spstr=new int(66666);
 	std::cout << "==========================\n";
 }
 
 
 void testcase2(){
-	std::cout << "\n\n=======testcase2=========" << std::endl;
+	std::cout << "\n\n######### testcase_2 #########" << std::endl;
 	SmartPointer<SomeClass> spclass1 = new SomeClass;//調用SmartPointer(T *p) :mPointer(p)
 	std::cout << std::endl;
 
@@ -39,13 +39,11 @@ void testcase2(){
 	// 先创建智能指针,再用另一个智能指针给已创建好的智能指针赋值
 	SmartPointer<SomeClass> spclass2 = new SomeClass;
 	std::cout << std::endl;
-	spclass2 = spclass1;//调用SmartPointer &operator = 
-	std::cout << std::endl;
 	std::cout << "==========================\n";
 }
 
 void testcase3(){
-	std::cout << "\n\n=======testcase3=========" << std::endl;
+	std::cout << "\n\n######### testcase_3 #########" << std::endl;
 	SomeClass *pSomeClass = new SomeClass(); //1
 	SmartPointer<SomeClass> spOuter = pSomeClass;
 	std::cout << "SomeClass Ref Count (" << spOuter.getRefCount() << ") outer 1." << std::endl;
@@ -63,7 +61,7 @@ void testcase3(){
 }
 // 解引用测试
 void testcase4_1(void){
-	std::cout << "\n\n=======testcase4_1=========" << std::endl;
+	std::cout << "\n\n######### testcase_4_1 #########" << std::endl;
 	SmartPointer<SomeClass> spsomeclass = new SomeClass();
 	(*spsomeclass).func();
 	spsomeclass->func();
@@ -72,7 +70,7 @@ void testcase4_1(void){
 
 // 判空与比较测试
 void testcase4_2(void){
-	std::cout << "\n\n=======testcase4_2=========" << std::endl;
+	std::cout << "\n\n######### testcase_4_2 #########" << std::endl;
 	SomeClass *psomeclass = new SomeClass();
 	SmartPointer<SomeClass> spsomeclass = psomeclass;
 
@@ -95,6 +93,9 @@ void testcase4_2(void){
 
 }
 int main(){
+	testcase1();
+	testcase2();
+	testcase3();
 	testcase4_1();
 	testcase4_2();
 	while (1);
