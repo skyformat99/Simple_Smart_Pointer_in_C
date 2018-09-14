@@ -5,7 +5,10 @@ class SomeClass {
 public:
 	SomeClass() { 
 		std::cout << "SomeClass default constructor !" << std::endl; 
-	};
+	}
+	~SomeClass() { 
+		std::cout << "SomeClass deconstructor !" << std::endl; 
+	}
 };
 
 void testcase1(){
