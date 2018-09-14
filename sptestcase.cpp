@@ -1,7 +1,7 @@
 ﻿
 #include <iostream>
 #include "smartpointer.h"
-class SomeClass {
+class SomeClass:public RefBase {
 public:
 	SomeClass() { 
 		std::cout << "SomeClass default constructor !" << std::endl; 
